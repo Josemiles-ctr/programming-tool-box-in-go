@@ -5,17 +5,18 @@ import (
 
 )
 func main() {
-	//arr:=[4]int{2, 5, 6,10}
-	//out:=1
-	//result:=datastructures.ProductExcept(arr, out)
-	//fmt.Print("The product of array [")
-	//for _, i:=range(arr){
-	//	fmt.Printf(" %d ", i)		
-	//}
-	//fmt.Printf("] without element at index %d at is %d", out, result)
-  first :=datastructures.LinkedList()
-	for first.Next != nil {
- 		fmt.Printf("%d -> ", first.Data)
-		first = first.Next
+	head := datastructures.LinkedList()
+	current := head
+	fmt.Println("Original Linked List:")
+	for current != nil {
+		fmt.Print(current.Data, "->")
+		current = current.Next
+	}
+	reversedHead := datastructures.ReverseLinkedList(head)
+	fmt.Println("\nReversed Linked List:")
+	current = reversedHead
+	for current != nil {
+		fmt.Print(current.Data, "->")
+		current = current.Next
 	}
 }

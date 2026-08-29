@@ -15,5 +15,4 @@ func LinkedList() *Node {
 	second.Next = third
 	third.Next = fourth
 	
-	return head
-}
+	return head}
