@@ -33,26 +33,50 @@ func (c *Cache) PrintLinkedList(){
  for node:=c.Head; node!=nil; node=node.Next {
 	fmt.Printf("%s ->", node.Data)
 	}
+	println()
 }
 
 func (c *Cache) AddCacheEntry(newNode *Node) *Cache {
-	
-	newNode.Prev=nil
-	referenceHead:=c.Head
-	if c.CurrentCount == c.Capacity {
-		for c.Head.Next !=nil{
-			c.Head=c.Head.Next
+	existing, last := c.AlreadyExists(newNode)
+	if existing != nil {
+		if existing == c.Head {
+			return c
 		}
-		c.Head.Prev.Next=nil;
-		newNode.Next=referenceHead
-		referenceHead.Prev=newNode
-		c.Head=newNode
-		return c
-	}else{
-		newNode.Next=c.Head
-		c.CurrentCount++
-		c.Head.Prev=newNode
-		c.Head=newNode
+
+		existing.Prev.Next = existing.Next
+		if existing.Next != nil {
+			existing.Next.Prev = existing.Prev
+		}
+		existing.Prev = nil
+		existing.Next = c.Head
+		c.Head.Prev = existing
+		c.Head = existing
 		return c
 	}
+
+	if c.CurrentCount == c.Capacity {
+		last.Prev.Next = nil
+		last.Prev = nil
+	} else {
+		c.CurrentCount++
+	}
+
+	newNode.Prev = nil
+	newNode.Next = c.Head
+	if c.Head != nil {
+		c.Head.Prev = newNode
+	}
+	c.Head = newNode
+	return c
+}
+
+func (c *Cache) AlreadyExists(newNode *Node) (*Node, *Node){
+	repeated, last :=(*Node)(nil), (*Node)(nil)
+	for node:=c.Head; node!=nil; node=node.Next {
+		if node.Data == newNode.Data {
+			repeated=node		
+		}
+		last=node
+	}
+	return repeated, last
 }
