@@ -1,23 +1,30 @@
 # goProgramming
 
-A collection of algorithms and data structures implemented in Go. Built to sharpen fundamentals and explore how different approaches solve classic problems.
+A small collection of Go examples for learning basic structs, linked lists, and algorithms. The examples are organized by package so you can explore each implementation independently.
 
-## What's Inside
+## Project files
 
-- **Data Structures**: Linked lists, trees, and other core structures with implementations from scratch
-- **Algorithms**: Sorting, searching, and various problem-solving patterns
+Every Go source file has a reference document in the [`docs/`](docs/) folder. Read the matching page for an explanation of the file's purpose, current behavior, and any implementation limitations.
 
-## Getting Started
+| Source file | Reference documentation |
+| --- | --- |
+| [`main.go`](main.go) | [Main program](docs/main.md) |
+| [`goBasics/structs.go`](goBasics/structs.go) | [Structs basics](docs/structs.md) |
+| [`datastructures/linked_list.go`](datastructures/linked_list.go) | [Singly linked list](docs/linked-list.md) |
+| [`datastructures/reversing_linked_list.go`](datastructures/reversing_linked_list.go) | [Reversing a linked list](docs/reversing-linked-list.md) |
+| [`datastructures/product_except.go`](datastructures/product_except.go) | [Product except one position](docs/product-except.md) |
+| [`algorithms/lru.go`](algorithms/lru.go) | [LRU cache](docs/LRU.md) |
 
-```bash
-go run src/main.go
+## Run
+
+Run the example program from the repository root:
+
+```sh
+go run .
 ```
 
-## Why This Repo
+The module name is `goProgramming`; the source packages can also be imported by their module paths, such as `goProgramming/algorithms`.
 
-I use this space to:
-- Practice writing clean, idiomatic Go
-- Test different solutions to classic problems
-- Keep my fundamentals sharp
+## Learning focus
 
-Feel free to poke around, fork it, or reach out if you spot something worth improving.
+The repository is intended for practicing Go fundamentals and examining straightforward implementations of common data structures and algorithms. Some functions are incomplete or have narrow input assumptions; their reference pages describe what the current code does.
